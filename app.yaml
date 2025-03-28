@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-ml-dummy
+spec:
+  replicas: 3  # Run 3 instance
+  selector:
+    matchLabels:
+      app: ml-dummy
+  template:
+    metadata:
+      labels:
+        app: ml-dummy
+    spec:
+      containers:
+      - name: ml-dummy
+        image: yourdockerusername/gitops-ml-dummy:1.0  # Your Docker image
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-ml-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: ml-dummy
+  type: LoadBalancer  # Makes it accessible online
