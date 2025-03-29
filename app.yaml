@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ml-dummy
-        image: yourdockerusername/gitops-ml-dummy:1.0  # Your Docker image
+        image: bmam995/gitops-ml-dummy:1.0  # Your Docker image
         ports:
         - containerPort: 80
 ---
